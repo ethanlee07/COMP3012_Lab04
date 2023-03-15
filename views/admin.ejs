@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <h1 class="mt-4">Dashboard</h1>
+<p class="lead mb-3">Welcome <%= user.name %>!</p>
+<br>
+<p>Current Active Sessions: </p>
+    <ul>
+      <% for (let session in sessions) { %>
+        <li>Session ID: <%= session %></li>
+        <li>User ID: <%= user.id %></li>
+        <form method="post" action="/admin">
+          <input type="hidden" name="sessionId" value="<%= session %>">
+          <button type="submit">Revoke Session</button>
+      </form>
+      <% } %>
+    </ul>
+</body>
+</html>
